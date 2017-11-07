@@ -73,6 +73,18 @@ cat <<EOF > /nixos/etc/nixos/nixos-in-place.nix
   users.extraUsers.root.password = "nixos";
   $digitalocean_configs
   $(cat /nixos/extra-config)
+  
+  environment.systemPackages = with pkgs; [
+    nixUnstable
+    wget sudo vim
+    autoconf automake binutils file findutils gcc gnumake patchutils
+    diffstat pkgconfig libtool groff texinfo which whois
+    sudo mutt fish elinks w3m git
+    gzip lzma bzip2
+    ruby ruby_2_4
+    screen vlock
+  ];
+
 }
 EOF
 
